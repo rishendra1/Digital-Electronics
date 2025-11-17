@@ -118,12 +118,12 @@ graph LR
 #### Truth Table
 
 | Enable | J | K | Q(t+1) | State |
-|--------|---|---|--------|------------------|--------------
-| 0 | X | X | Q(t) | Hold/No Change |
-| 1 | 0 | 0 | Q(t) | Hold/No Change |
-| 1 | 0 | 1 | 0 | Reset |
-| 1 | 1 | 0 | 1 | Set |
-| 1 | 1 | 1 | Q'(t) | Toggle |
+|--------|---|---|--------|-----------------|
+| 0      | X | X | Q(t)   | Hold/No Change  |
+| 1      | 0 | 0 | Q(t)   | Hold/No Change  |
+| 1      | 0 | 1 | 0      | Reset           |
+| 1      | 1 | 0 | 1      | Set             |
+| 1      | 1 | 1 | Q'(t)  | Toggle          |
 
 **Characteristic Equation**: Q(t+1) = JQ' + K'Q
 
@@ -174,12 +174,12 @@ graph LR
 #### Truth Table
 
 | CLK | S | R | Q(t+1) | State |
-|-----|---|---|--------|------------------|---------------
-| ↑ | 0 | 0 | Q(t) | Hold/No Change |
-| ↑ | 0 | 1 | 0 | Reset |
-| ↑ | 1 | 0 | 1 | Set |
-| ↑ | 1 | 1 | X | Invalid/Forbidden|
-| 0/1 | X | X | Q(t) | No Change |
+|-----|---|---|--------|-----------------|
+| ↑   | 0 | 0 | Q(t)   | Hold/No Change  |
+| ↑   | 0 | 1 | 0      | Reset           |
+| ↑   | 1 | 0 | 1      | Set             |
+| ↑   | 1 | 1 | X      | Invalid/Forbidden|
+| 0/1 | X | X | Q(t)   | No Change       |
 
 #### Characteristic Table
 
