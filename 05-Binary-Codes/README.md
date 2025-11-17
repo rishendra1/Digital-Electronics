@@ -290,17 +290,6 @@ XS-3 = BCD + 0011
 - Uses multiple parity bits
 - Parity bits at positions: 2⁰, 2¹, 2², 2³...
 
-## Practice Problems
-
-1. Convert decimal 673 to BCD
-2. Add BCD numbers: 46 + 37
-3. Convert binary 10110 to Gray code
-4. Convert Gray code 1101 to binary
-5. Find Excess-3 code for 825
-6. What is ASCII code for 'M'?
-7. Find 9's complement of 7 using XS-3
-8. Perform BCD subtraction: 85 - 47
-
 ## Key Comparisons
 
 ### Binary vs BCD
