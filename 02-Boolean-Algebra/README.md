@@ -130,14 +130,6 @@ Change AND ↔ OR and 0 ↔ 1 to get dual expression
 ### Transposition Theorem
 - AB + A'C = (A + C)(A' + B)
 
-## Practice Problems
-
-1. Simplify: F = ABC + AB'C + A'BC + ABC'
-2. Prove: (A + B)(A + C) = A + BC
-3. Convert to SOP: F(A,B,C) = ΠM(0,2,5,7)
-4. Simplify using De Morgan's: F = ((AB)' + C')'
-5. Find complement of: F = AB + A'C
-
 ## Applications
 
 - Digital circuit design and analysis
