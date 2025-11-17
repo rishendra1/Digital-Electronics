@@ -229,10 +229,10 @@ graph LR
 #### Truth Table
 
 | CLK | D | Q(t+1) | State |
-|-----|---|--------|------------------|-------------
-| ↑ | 0 | 0 | Reset |
-| ↑ | 1 | 1 | Set |
-| 0/1 | X | Q(t) | No Change |
+|-----|---|--------|----------------|
+| ↑   | 0 | 0      | Reset          |
+| ↑   | 1 | 1      | Set            |
+| 0/1 | X | Q(t)   | No Change      |
 
 #### Characteristic Table
 
@@ -279,12 +279,12 @@ graph LR
 #### Truth Table
 
 | CLK | J | K | Q(t+1) | State |
-|-----|---|---|--------|------------------|---------------
-| ↑ | 0 | 0 | Q(t) | Hold/No Change |
-| ↑ | 0 | 1 | 0 | Reset |
-| ↑ | 1 | 0 | 1 | Set |
-| ↑ | 1 | 1 | Q'(t) | Toggle |
-| 0/1 | X | X | Q(t) | No Change |
+|-----|---|---|--------|-----------------|
+| ↑   | 0 | 0 | Q(t)   | Hold/No Change  |
+| ↑   | 0 | 1 | 0      | Reset           |
+| ↑   | 1 | 0 | 1      | Set             |
+| ↑   | 1 | 1 | Q'(t)  | Toggle          |
+| 0/1 | X | X | Q(t)   | No Change       |
 
 #### Characteristic Table
 
@@ -335,10 +335,10 @@ graph LR
 #### Truth Table
 
 | CLK | T | Q(t+1) | State |
-|-----|---|--------|------------------|-------------
-| ↑ | 0 | Q(t) | Hold/No Change |
-| ↑ | 1 | Q'(t) | Toggle |
-| 0/1 | X | Q(t) | No Change |
+|-----|---|--------|-----------------|
+| ↑   | 0 | Q(t)   | Hold/No Change  |
+| ↑   | 1 | Q'(t)  | Toggle          |
+| 0/1 | X | Q(t)   | No Change       |
 
 #### Characteristic Table
 
