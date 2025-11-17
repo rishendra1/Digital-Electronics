@@ -372,17 +372,6 @@ Add 1:    +    1
 - Greater than, less than
 - Equality checks
 
-## Practice Problems
-
-1. Find 1's complement of 10110011
-2. Find 2's complement of 11001010
-3. Perform: 0110 + 1010 (4-bit 2's comp)
-4. Perform: 1001 - 0011 (4-bit 2's comp)
-5. Detect overflow: 0111 + 0101 (4-bit)
-6. Convert -25 to 8-bit 2's complement
-7. Sign extend 4-bit 1011 to 8-bit
-8. Find 10's complement of 6789
-
 ## Important Notes
 
 - **2's complement is standard** in modern systems
