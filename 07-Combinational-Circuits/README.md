@@ -68,6 +68,23 @@ A  B | Sum  Carry
 
 **Components:** 1 XOR gate, 1 AND gate
 
+**Circuit Diagram:**
+
+```mermaid
+graph LR
+    A[A] --> XOR[XOR Gate]
+    B[B] --> XOR
+    A --> AND[AND Gate]
+    B --> AND
+    XOR --> Sum[Sum]
+    AND --> Carry[Carry]
+    
+    style XOR fill:#e1f5ff
+    style AND fill:#e1f5ff
+    style Sum fill:#c8e6c9
+    style Carry fill:#c8e6c9
+```
+
 ## Full Adder
 
 A full adder adds three binary digits (two significant bits and a carry-in) and produces Sum and Carry-out.
@@ -92,6 +109,26 @@ A  B  Cin | Sum  Cout
 **Implementation:**
 - Using 2 Half Adders and 1 OR gate
 - Direct implementation with gates
+
+**Circuit Diagram:**
+
+```mermaid
+graph TB
+    A[A] --> HA1[Half Adder 1]
+    B[B] --> HA1
+    Cin[Cin] --> HA2[Half Adder 2]
+    HA1 -->|Sum1| HA2
+    HA1 -->|Carry1| OR[OR Gate]
+    HA2 -->|Sum| Output_Sum[Sum]
+    HA2 -->|Carry2| OR
+    OR --> Output_Cout[Cout]
+    
+    style HA1 fill:#e1f5ff
+    style HA2 fill:#e1f5ff
+    style OR fill:#e1f5ff
+    style Output_Sum fill:#c8e6c9
+    style Output_Cout fill:#c8e6c9
+```
 
 ## Binary Adders
 
@@ -168,6 +205,24 @@ A multiplexer selects one of many input data lines and forwards it to a single o
 **4:1 MUX Output:**
 Y = S1'·S0'·I0 + S1'·S0·I1 + S1·S0'·I2 + S1·S0·I3
 
+**4:1 MUX Block Diagram:**
+
+```mermaid
+graph TB
+    I0[I0] --> MUX[4:1 Multiplexer]
+    I1[I1] --> MUX
+    I2[I2] --> MUX
+    I3[I3] --> MUX
+    S1[S1] --> MUX
+    S0[S0] --> MUX
+    MUX --> Y[Output Y]
+    
+    style MUX fill:#e1f5ff
+    style Y fill:#c8e6c9
+    style S1 fill:#fff9c4
+    style S0 fill:#fff9c4
+```
+
 ### MUX as Universal Gate
 Multiplexers can implement any Boolean function:
 - Connect variables to select lines
@@ -208,6 +263,26 @@ Converts n-bit binary input to maximum 2^n unique output lines.
 **With Enable:**
 - Active-high enable: Output active when E=1
 - Active-low enable: Output active when E=0
+
+**2-to-4 Decoder Block Diagram:**
+
+```mermaid
+graph TB
+    A1[A1] --> DEC[2-to-4 Decoder]
+    A0[A0] --> DEC
+    EN[Enable] --> DEC
+    DEC --> D0[D0]
+    DEC --> D1[D1]
+    DEC --> D2[D2]
+    DEC --> D3[D3]
+    
+    style DEC fill:#e1f5ff
+    style D0 fill:#c8e6c9
+    style D1 fill:#c8e6c9
+    style D2 fill:#c8e6c9
+    style D3 fill:#c8e6c9
+    style EN fill:#fff9c4
+```
 
 ## Encoder
 
