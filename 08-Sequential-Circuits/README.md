@@ -35,11 +35,11 @@ graph LR
 #### Truth Table (NOR-based SR Latch)
 
 | S | R | Q(t+1) | State |
-|---|---|--------|------------------|-------
-| 0 | 0 | Q(t) | Hold/No Change |
-| 0 | 1 | 0 | Reset |
-| 1 | 0 | 1 | Set |
-| 1 | 1 | X | Invalid/Forbidden|
+|---|---|--------|------------------|
+| 0 | 0 | Q(t)   | Hold/No Change   |
+| 0 | 1 | 0      | Reset            |
+| 1 | 0 | 1      | Set              |
+| 1 | 1 | X      | Invalid/Forbidden|
 
 #### Using NAND Gates
 
@@ -56,11 +56,11 @@ graph LR
 #### Truth Table (NAND-based SR Latch)
 
 | S' | R' | Q(t+1) | State |
-|----|----|--------|------------------|---------------
-| 0 | 0 | X | Invalid/Forbidden|
-| 0 | 1 | 1 | Set |
-| 1 | 0 | 0 | Reset |
-| 1 | 1 | Q(t) | Hold/No Change |
+|----|----|---------|-----------------|
+| 0  | 0  | X       | Invalid/Forbidden |
+| 0  | 1  | 1       | Set               |
+| 1  | 0  | 0       | Reset             |
+| 1  | 1  | Q(t)    | Hold/No Change    |
 
 ---
 
@@ -86,10 +86,10 @@ graph LR
 #### Truth Table
 
 | Enable | D | Q(t+1) | State |
-|--------|---|--------|------------------|--------------
-| 0 | X | Q(t) | Hold/No Change |
-| 1 | 0 | 0 | Reset |
-| 1 | 1 | 1 | Set |
+|--------|---|--------|------------------|
+| 0      | X | Q(t)   | Hold/No Change   |
+| 1      | 0 | 0      | Reset            |
+| 1      | 1 | 1      | Set              |
 
 **Characteristic Equation**: Q(t+1) = D (when Enable = 1)
 
