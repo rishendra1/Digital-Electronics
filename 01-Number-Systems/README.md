@@ -70,14 +70,6 @@ Where:
 - B = base of number system
 - n = position (0, 1, 2, ...)
 
-## Practice Problems
-
-1. Convert 247₁₀ to binary, octal, and hexadecimal
-2. Convert 67.365₁₀ to binary
-3. Convert 1011₂ to decimal, octal, and hexadecimal
-4. Convert 623.77₈ to decimal and binary
-5. Convert 2AC5.D₁₆ to decimal, octal, and binary
-
 ## Important Notes
 
 - When converting decimals with fractional parts, multiply the fraction by the target base repeatedly
