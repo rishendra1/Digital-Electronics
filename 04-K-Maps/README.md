@@ -239,14 +239,6 @@ F(A,B,C) = Σm(0,2,6) + d(1,3,5)
 - **Half filled**: One variable determines output
 - **Symmetry**: Look for common patterns
 
-## Practice Problems
-
-1. Minimize: F(A,B,C) = Σm(0,1,2,5,6,7)
-2. Minimize: F(A,B,C,D) = Σm(0,1,4,5,6,7,8,9,12,13) + d(10,14)
-3. Find POS for: F(A,B,C) = ΠM(0,2,5,7)
-4. Minimize 5-variable: F(A,B,C,D,E) = Σm(0,1,4,5,13,15,20,21,22,23,28,30)
-5. Identify EPIs for: F = Σm(0,2,5,6,7,8,10,13,14,15)
-
 ## Applications
 
 - **Circuit Design**: Minimize logic gates
