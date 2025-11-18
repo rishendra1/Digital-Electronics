@@ -485,44 +485,250 @@ sequenceDiagram
 
 ## Conversion Between Flip-Flops
 
-Different flip-flops can be converted into one another using combinational logic:
+Flip-flops can be converted from one type to another using combinational logic gates. The conversion process involves:
 
-### SR to JK
-- Direct connection: J = S, K = R
-- JK eliminates the invalid state of SR
+1. **Understanding excitation tables** of both source and target flip-flops
+2. **Deriving conversion logic** using K-maps or Boolean algebra  
+3. **Implementing additional gates** to transform input/output behavior
 
-### SR to D
+### Conversion Methodology
+
+**Step-by-Step Procedure:**
+
+1. Create a conversion table with present state (Qn) and next state (Qn+1)
+2. Determine required inputs for the source flip-flop
+3. Determine required inputs for the target flip-flop
+4. Derive logic equations using K-maps
+5. Implement the combinational logic circuit
+
+---
+
+### SR to JK Flip-Flop
+
+**Conversion Logic:**
+- J = S  
+- K = R
+- JK eliminates the invalid state (S=1, R=1) that exists in SR
+
+**Implementation:** Direct connection possible as JK is a universal flip-flop that encompasses SR functionality.
+
+---
+
+### SR to D Flip-Flop
+
+**Conversion Logic:**
 - D = S
-- R = S'
+- R = S' (complement of S)
 
-### SR to T
-- T = S ⊕ R
-- Requires XOR gate
+**Truth Table:**
 
-### JK to D
-- D = J
-- K = J'
+| D | S | R |
+|---|---|---|
+| 0 | 0 | 1 |
+| 1 | 1 | 0 |
 
-### JK to T
-- T = J ⊕ K
-- J = K = T
+**Implementation:** Requires one NOT gate
 
-### D to JK
+---
+
+### SR to T Flip-Flop  
+
+**Conversion Logic:**
+- T = S ⊕ R (XOR of S and R)
+- Requires XOR gate for implementation
+
+---
+
+### JK to SR Flip-Flop
+
+**Conversion Logic:**
+- S = J · Q' (J AND NOT Q)
+- R = K · Q (K AND Q)
+
+**Implementation:** Requires two AND gates and one NOT gate
+
+---
+
+### JK to D Flip-Flop
+
+**Conversion Logic:**
+- D = J · Q' + K' · Q
+- Simplified: D = J · Q' + K' · Q
+
+**Truth Table:**
+
+| Q | J | K | D |
+|---|---|---|---|
+| 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 0 |
+| 0 | 1 | 0 | 1 |
+| 0 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 1 |
+| 1 | 0 | 1 | 0 |
+| 1 | 1 | 0 | 1 |
+| 1 | 1 | 1 | 0 |
+
+**Simplified:** D = J (when K=0) or D = Q (when J=0, K=0)
+
+---
+
+### JK to T Flip-Flop
+
+**Conversion Logic:**
+- T = J · Q' + K · Q  
+- T = J ⊕ K (when considering toggle behavior)
+
+**Implementation:** Can use XOR gate or combination of AND-OR gates
+
+---
+
+### D to SR Flip-Flop
+
+**Conversion Logic:**
+- S = D · Q'
+- R = D' · Q
+
+**Implementation:** Requires two AND gates and one NOT gate
+
+---
+
+### D to JK Flip-Flop
+
+**Conversion Logic:**
 - J = D
 - K = D'
 
-### D to T
-- T = D ⊕ Q
-- Requires feedback from Q
+**Truth Table:**
 
-### T to D
-- D = T ⊕ Q
-- Requires feedback from Q
+| D | J | K |
+|---|---|---|
+| 0 | 0 | 1 |
+| 1 | 1 | 0 |
 
-### T to JK
-- J = K = T
+**Implementation:** Requires one NOT gate
 
 ---
+
+### D to T Flip-Flop  
+
+**Conversion Logic:**
+- T = D ⊕ Q (XOR of D and Q)
+
+**Characteristic Equation:** Qn+1 = D ⊕ Q
+
+**Implementation:** Requires one XOR gate with feedback from Q
+
+---
+
+### T to SR Flip-Flop
+
+**Conversion Logic:**
+- S = T · Q'
+- R = T · Q
+
+**Truth Table:**
+
+| Q | T | S | R |
+|---|---|---|---|
+| 0 | 0 | 0 | 0 |
+| 0 | 1 | 1 | 0 |
+| 1 | 0 | 0 | 0 |
+| 1 | 1 | 0 | 1 |
+
+**Implementation:** Requires two AND gates
+
+---
+
+### T to JK Flip-Flop
+
+**Conversion Logic:**
+- J = T
+- K = T  
+
+**Implementation:** Direct connection of T to both J and K inputs
+
+---
+
+### T to D Flip-Flop
+
+**Conversion Logic:**
+- D = T ⊕ Q (XOR of T and Q)
+
+**Truth Table:**
+
+| Q | T | D |
+|---|---|---|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
+
+**Implementation:** Requires one XOR gate with feedback
+
+---
+
+### Universal Flip-Flop Conversions
+
+**JK as Universal Flip-Flop:**
+
+The JK flip-flop can implement any other flip-flop type:
+
+1. **JK to SR:** J=S, K=R
+2. **JK to D:** J=D, K=D'
+3. **JK to T:** J=K=T
+
+**Practical Notes:**
+- JK is most versatile for conversions
+- D flip-flop is simplest but requires feedback for T implementation
+- SR has invalid state (S=R=1) which limits direct conversions
+- T flip-flop requires feedback in most conversions
+
+---
+
+### Conversion Design Examples
+
+#### Example 1: Convert D to T Flip-Flop
+
+**Given:** D flip-flop  
+**Required:** T flip-flop behavior
+
+**Solution:**
+1. T flip-flop toggles when T=1
+2. D must receive: D = T ⊕ Q
+3. Circuit: Connect T and Q to XOR gate, output to D input
+
+#### Example 2: Convert JK to D Flip-Flop
+
+**Given:** JK flip-flop  
+**Required:** D flip-flop behavior
+
+**Solution:**
+1. D flip-flop: Qn+1 = D
+2. Connect: J = D, K = D' (using NOT gate)
+3. When D=0: J=0, K=1 → Reset
+4. When D=1: J=1, K=0 → Set
+
+---
+
+### Conversion Summary Table
+
+| From → To | Additional Logic Required |
+|-----------|---------------------------|
+| SR → JK | None (direct) |
+| SR → D | 1 NOT gate |
+| SR → T | 1 XOR gate |
+| JK → SR | 2 AND gates, 1 NOT gate |
+| JK → D | 1 NOT gate |
+| JK → T | 1 XOR or AND-OR gates |
+| D → SR | 2 AND gates, 1 NOT gate |
+| D → JK | 1 NOT gate |
+| D → T | 1 XOR gate + feedback |
+| T → SR | 2 AND gates |
+| T → JK | None (connect T to J and K) |
+| T → D | 1 XOR gate + feedback |
+
+---
+
 
 ## Master-Slave Configuration
 
