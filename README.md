@@ -1,2 +1,2 @@
 # Digital-Electronics
-Comprehensive notes and resources for Digital Electronics course (CSE207) - Number systems, Boolean algebra, logic gates, K-maps, and more
+Hi friends this is Digital Electronics notes. I have taken content through pdfs, used ai to create the circuit diagrams and tables and also added my hand written notes.
