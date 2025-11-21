@@ -794,19 +794,6 @@ Master-Slave flip-flops use two latches in series:
 
 ---
 
-## Practice Problems
-
-1. Design a 4-bit binary counter using JK flip-flops
-2. Convert a T flip-flop to D flip-flop
-3. Draw timing diagrams for all flip-flop types
-4. Analyze setup and hold time requirements
-5. Design a sequence detector using flip-flops
-6. Implement a shift register using D flip-flops
-7. Compare power consumption of latches vs flip-flops
-8. Design a frequency divider using T flip-flops
-
----
-
 ## Important Notes
 
 - **Latches** are transparent and level-sensitive
@@ -1195,19 +1182,6 @@ graph TD
 | Simple storage | Buffer Register |
 
 ---
-
-## PRACTICE PROBLEMS
-
-1. Design a 4-bit SIPO shift register using D flip-flops
-2. Convert the binary number 1101 from parallel to serial using PISO
-3. Calculate time required to load 8 bits serially at 1MHz clock
-4. Design a bidirectional 4-bit shift register
-5. Explain how to use a shift register for multiplication by 4
-6. Compare power consumption: SISO vs PIPO for 8-bit data
-7. Design a ring counter using a 4-bit shift register
-8. Implement a sequence detector using shift registers
-
-9. ---
 
 ## IMPORTANT NOTES
 
