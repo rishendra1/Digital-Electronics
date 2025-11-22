@@ -832,24 +832,23 @@ Registers are sequential circuits consisting of a group of flip-flops used to st
 4. **Parallel Access**: Can load/read all bits simultaneously
 5. **Cascadable**: Multiple registers can be connected in series
                      
-                      6. ---
-                     
-                      7. ## CLASSIFICATION OF REGISTERS
-                     
-                      8. Registers are classified based on the way data is loaded and retrieved:
-                     
-                      9. ### 1. Based on Data Loading Method
-                     
-                      10. #### A. Parallel Load Registers (Parallel-In)
-                      11. - All bits loaded simultaneously in one clock pulse
-                          - - Faster data loading
-                            - - Requires n input lines for n-bit register
-                              - - Used when speed is critical
-                               
-                                - #### B. Serial Load Registers (Serial-In)
-                                - - Bits loaded one at a time over multiple clock pulses
-                                  - - Slower but requires only one input line
-                                    - - Used in serial data transmission
+                                           
+## CLASSIFICATION OF REGISTERS
+
+Registers are classified based on the way data is loaded and retrieved:
+
+### 1. Based on Data Loading Method
+
+#### A. Parallel Load Registers (Parallel-In)
+- All bits loaded simultaneously in one clock pulse
+- Faster data loading
+- Requires n input lines for n-bit register
+- Used when speed is critical
+
+#### B. Serial Load Registers (Serial-In)
+- Bits loaded one at a time over multiple clock pulses
+- Slower but requires only one input line
+- Used in serial data transmission
 - Takes n clock pulses to load n bits
 
 ### 2. Based on Data Retrieval Method
@@ -881,7 +880,6 @@ Registers are sequential circuits consisting of a group of flip-flops used to st
 - Used for counting operations
 - Can count up or down
 
----
 
 ## TYPES OF REGISTERS
 
