@@ -1208,3 +1208,502 @@ graph TD
 ---
 
 **Registers form the backbone of digital data storage and manipulation. Understanding their types, operations, and applications is essential for designing efficient digital systems.**
+
+## COUNTERS
+
+Counters are sequential circuits that go through a prescribed sequence of states upon the application of input pulses. The input pulses may be clock pulses or may originate from an external source. Counters are used extensively in digital systems for counting events, frequency division, timing operations, and sequence generation.
+
+### Definition and Purpose
+
+**Counter**: A counter is a register capable of counting the number of clock pulses arriving at its input. It consists of a group of flip-flops connected together to perform counting operations.
+
+**Key Characteristics:**
+- Counts in binary or other number systems
+- Can count up (incrementing) or down (decrementing)
+- Has a maximum count (modulus)
+- Cycles back to initial state after reaching maximum count
+- Used for timing, sequencing, and control applications
+
+### Types of Counters
+
+Counters are classified based on:
+1. **Clock signal connection**: Asynchronous (Ripple) or Synchronous
+2. **Counting direction**: Up counter, Down counter, or Up-Down counter
+3. **Modulus**: Binary (mod-2ⁿ) or BCD (mod-10)
+
+## ASYNCHRONOUS (RIPPLE) COUNTERS
+
+In ripple counters, the output of one flip-flop serves as the clock input for the next flip-flop. The flip-flops do not change states simultaneously; instead, there is a ripple effect as each flip-flop triggers the next one.
+
+### Characteristics of Ripple Counters
+
+**Advantages:**
+- Simple design with minimal hardware
+- Easy to construct
+- Low power consumption
+- Require fewer connections
+
+**Disadvantages:**
+- Cumulative propagation delay
+- Not suitable for high-frequency applications
+- Glitches in output during state transitions
+- Slower than synchronous counters
+
+### 2-Bit Ripple Counter (Mod-4)
+
+#### Circuit Description
+- Uses 2 T flip-flops or JK flip-flops (with J=K=1)
+- First flip-flop (FF0) triggered by external clock
+- Second flip-flop (FF1) triggered by output of FF0
+- Counts from 00 to 11 (0 to 3)
+
+#### Truth Table (2-Bit Ripple Counter)
+
+| Clock Pulse | Q1 | Q0 | Decimal |
+|-------------|----|----|----------|
+| Initial     | 0  | 0  | 0        |
+| 1           | 0  | 1  | 1        |
+| 2           | 1  | 0  | 2        |
+| 3           | 1  | 1  | 3        |
+| 4           | 0  | 0  | 0 (Reset)|
+
+#### State Diagram
+```
+    0 (00) → 1 (01) → 2 (10) → 3 (11) → 0 (00)
+    ↑                                      |
+    |______________________________________|
+```
+
+### 3-Bit Ripple Counter (Mod-8)
+
+#### Circuit Description
+- Uses 3 T flip-flops
+- FF0 triggered by external clock
+- FF1 triggered by Q0
+- FF2 triggered by Q1
+- Counts from 000 to 111 (0 to 7)
+
+#### Truth Table (3-Bit Ripple Counter)
+
+| Clock Pulse | Q2 | Q1 | Q0 | Decimal |
+|-------------|----|----|----|---------|
+| Initial     | 0  | 0  | 0  | 0       |
+| 1           | 0  | 0  | 1  | 1       |
+| 2           | 0  | 1  | 0  | 2       |
+| 3           | 0  | 1  | 1  | 3       |
+| 4           | 1  | 0  | 0  | 4       |
+| 5           | 1  | 0  | 1  | 5       |
+| 6           | 1  | 1  | 0  | 6       |
+| 7           | 1  | 1  | 1  | 7       |
+| 8           | 0  | 0  | 0  | 0 (Reset)|
+
+**Propagation Delay**: Total delay = 3 × (flip-flop propagation delay)
+
+### 4-Bit Ripple Counter (Mod-16)
+
+#### Circuit Description
+- Uses 4 T flip-flops
+- Each flip-flop triggered by the output of the previous one
+- Counts from 0000 to 1111 (0 to 15)
+- Frequency division: Output frequency = Input frequency / 16
+
+#### Truth Table (4-Bit Ripple Counter)
+
+| Clock | Q3 | Q2 | Q1 | Q0 | Decimal |
+|-------|----|----|----|----|----------|
+| 0     | 0  | 0  | 0  | 0  | 0        |
+| 1     | 0  | 0  | 0  | 1  | 1        |
+| 2     | 0  | 0  | 1  | 0  | 2        |
+| 3     | 0  | 0  | 1  | 1  | 3        |
+| 4     | 0  | 1  | 0  | 0  | 4        |
+| 5     | 0  | 1  | 0  | 1  | 5        |
+| 6     | 0  | 1  | 1  | 0  | 6        |
+| 7     | 0  | 1  | 1  | 1  | 7        |
+| 8     | 1  | 0  | 0  | 0  | 8        |
+| 9     | 1  | 0  | 0  | 1  | 9        |
+| 10    | 1  | 0  | 1  | 0  | 10       |
+| 11    | 1  | 0  | 1  | 1  | 11       |
+| 12    | 1  | 1  | 0  | 0  | 12       |
+| 13    | 1  | 1  | 0  | 1  | 13       |
+| 14    | 1  | 1  | 1  | 0  | 14       |
+| 15    | 1  | 1  | 1  | 1  | 15       |
+| 16    | 0  | 0  | 0  | 0  | 0 (Reset)|
+
+## SYNCHRONOUS COUNTERS
+
+In synchronous counters, all flip-flops are triggered simultaneously by the same clock signal. This eliminates the cumulative delay problem present in ripple counters and allows for faster operation at higher frequencies.
+
+### Characteristics of Synchronous Counters
+
+**Advantages:**
+- All flip-flops change states simultaneously
+- No cumulative propagation delay
+- Faster operation
+- Suitable for high-frequency applications
+- More reliable timing
+- Can be easily designed for any count sequence
+
+**Disadvantages:**
+- More complex design
+- Requires more logic gates
+- Higher power consumption
+- More expensive than ripple counters
+
+### Synchronous vs Asynchronous Comparison
+
+| Feature | Ripple Counter | Synchronous Counter |
+|---------|----------------|---------------------|
+| **Clock** | Cascaded | Common to all FFs |
+| **Speed** | Slower | Faster |
+| **Delay** | Cumulative | Single FF delay |
+| **Design** | Simple | Complex |
+| **Power** | Lower | Higher |
+| **Cost** | Cheaper | More expensive |
+| **Applications** | Low-frequency | High-frequency |
+
+## BINARY COUNTERS (SYNCHRONOUS)
+
+Binary counters count in natural binary sequence. They can be designed using JK or D flip-flops with appropriate combinational logic.
+
+### 2-Bit Synchronous Binary Counter
+
+#### Circuit Description
+- Uses 2 JK flip-flops
+- Both flip-flops clocked by the same clock signal
+- FF0: J0 = K0 = 1 (always toggles)
+- FF1: J1 = K1 = Q0 (toggles when Q0 = 1)
+
+#### Truth Table (2-Bit Synchronous Binary Counter)
+
+| Clock | Q1(t) | Q0(t) | J1 | K1 | J0 | K0 | Q1(t+1) | Q0(t+1) | Decimal |
+|-------|-------|-------|----|----|----|----|---------|---------|----------|
+| 1     | 0     | 0     | 0  | 0  | 1  | 1  | 0       | 1       | 1        |
+| 2     | 0     | 1     | 1  | 1  | 1  | 1  | 1       | 0       | 2        |
+| 3     | 1     | 0     | 0  | 0  | 1  | 1  | 1       | 1       | 3        |
+| 4     | 1     | 1     | 1  | 1  | 1  | 1  | 0       | 0       | 0        |
+
+**Logic Equations:**
+- J0 = K0 = 1
+- J1 = K1 = Q0
+
+### 3-Bit Synchronous Binary Counter
+
+#### Circuit Description
+- Uses 3 JK flip-flops
+- All flip-flops clocked by the same clock signal
+- FF0: J0 = K0 = 1
+- FF1: J1 = K1 = Q0
+- FF2: J2 = K2 = Q0 · Q1
+
+#### Truth Table (3-Bit Synchronous Binary Counter)
+
+| Clock | Q2 | Q1 | Q0 | Q2(next) | Q1(next) | Q0(next) | Decimal |
+|-------|----|----|----|---------|---------|---------|---------|
+| 0     | 0  | 0  | 0  | 0       | 0       | 1       | 0       |
+| 1     | 0  | 0  | 1  | 0       | 1       | 0       | 1       |
+| 2     | 0  | 1  | 0  | 0       | 1       | 1       | 2       |
+| 3     | 0  | 1  | 1  | 1       | 0       | 0       | 3       |
+| 4     | 1  | 0  | 0  | 1       | 0       | 1       | 4       |
+| 5     | 1  | 0  | 1  | 1       | 1       | 0       | 5       |
+| 6     | 1  | 1  | 0  | 1       | 1       | 1       | 6       |
+| 7     | 1  | 1  | 1  | 0       | 0       | 0       | 7       |
+
+**Logic Equations:**
+- J0 = K0 = 1
+- J1 = K1 = Q0
+- J2 = K2 = Q0 · Q1
+
+### 4-Bit Synchronous Binary Counter
+
+#### Circuit Description
+- Uses 4 JK flip-flops
+- All flip-flops share common clock
+- Logic gates determine when each FF toggles
+
+**Logic Equations:**
+- J0 = K0 = 1
+- J1 = K1 = Q0
+- J2 = K2 = Q0 · Q1
+- J3 = K3 = Q0 · Q1 · Q2
+
+**General Pattern**: For an n-bit binary counter:
+- Jn = Kn = Q0 · Q1 · Q2 · ... · Qn-1
+
+## UP-DOWN COUNTER
+
+An up-down counter is a bidirectional counter that can count both up (increment) and down (decrement) depending on a control signal.
+
+### Characteristics
+
+**Features:**
+- Can count in both directions
+- Uses a control signal (Up/Down) to select counting direction
+- When Up/Down = 1: Counts up (0, 1, 2, 3, ...)
+- When Up/Down = 0: Counts down (3, 2, 1, 0, ...)
+- Commonly used in control systems and processors
+
+### 2-Bit Synchronous Up-Down Counter
+
+#### Circuit Description
+- Uses 2 JK flip-flops
+- Control signal (M) determines counting direction
+- Additional logic gates for bidirectional operation
+
+#### Logic Equations
+
+**For Up Counter Mode (M = 1):**
+- J0 = K0 = 1
+- J1 = K1 = Q0
+
+**For Down Counter Mode (M = 0):**
+- J0 = K0 = 1
+- J1 = K1 = Q0'
+
+**Combined Logic:**
+- J0 = K0 = 1
+- J1 = K1 = (M · Q0) + (M' · Q0')
+- Or: J1 = K1 = M ⊕ Q0 (XOR operation)
+
+#### Truth Table (2-Bit Up-Down Counter)
+
+**Counting Up (M = 1):**
+
+| Clock | Q1 | Q0 | Decimal | Next State |
+|-------|----|----|---------|------------|
+| -     | 0  | 0  | 0       | 01         |
+| -     | 0  | 1  | 1       | 10         |
+| -     | 1  | 0  | 2       | 11         |
+| -     | 1  | 1  | 3       | 00         |
+
+**Counting Down (M = 0):**
+
+| Clock | Q1 | Q0 | Decimal | Next State |
+|-------|----|----|---------|------------|
+| -     | 0  | 0  | 0       | 11         |
+| -     | 0  | 1  | 1       | 00         |
+| -     | 1  | 0  | 2       | 01         |
+| -     | 1  | 1  | 3       | 10         |
+
+### 3-Bit Synchronous Up-Down Counter
+
+#### Logic Equations
+
+**For Up Mode (M = 1):**
+- J0 = K0 = 1
+- J1 = K1 = Q0
+- J2 = K2 = Q0 · Q1
+
+**For Down Mode (M = 0):**
+- J0 = K0 = 1
+- J1 = K1 = Q0'
+- J2 = K2 = Q0' · Q1'
+
+**Combined Logic:**
+- J0 = K0 = 1
+- J1 = K1 = (M · Q0) + (M' · Q0')
+- J2 = K2 = (M · Q0 · Q1) + (M' · Q0' · Q1')
+
+#### State Diagram
+
+```
+Up Mode (M=1):    0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 0
+Down Mode (M=0):  7 → 6 → 5 → 4 → 3 → 2 → 1 → 0 → 7
+```
+
+### Applications of Up-Down Counters
+
+- Position tracking systems
+- Bidirectional motor control
+- Inventory management
+- Elevator floor indicators
+- Score keeping in games
+- Undo/Redo operations in software
+
+## BCD COUNTER (DECADE COUNTER)
+
+A BCD (Binary Coded Decimal) counter, also called a decade counter, counts from 0 to 9 (10 states) and then resets to 0. It is widely used in digital systems that interface with decimal displays.
+
+### Characteristics
+
+**Key Features:**
+- Counts from 0000 to 1001 (0 to 9 in decimal)
+- Modulus-10 counter
+- Skips binary states 1010 to 1111 (10 to 15)
+- Resets to 0000 after reaching 1001
+- Four flip-flops required (for 4 bits)
+- Uses feedback logic to reset at count 10
+
+### Design Approach
+
+Two common methods:
+1. **Ripple (Asynchronous) BCD Counter**: Simple but slower
+2. **Synchronous BCD Counter**: Faster but more complex
+
+### Synchronous BCD Counter
+
+#### Circuit Description
+- Uses 4 JK flip-flops
+- All flip-flops share common clock
+- Additional logic to reset at decimal 10
+- Feedback from Q3 and Q1 to reset circuit
+
+#### Truth Table (BCD Counter)
+
+| Clock | Q3 | Q2 | Q1 | Q0 | Decimal | State      |
+|-------|----|----|----|----|---------|------------|
+| 0     | 0  | 0  | 0  | 0  | 0       | Valid      |
+| 1     | 0  | 0  | 0  | 1  | 1       | Valid      |
+| 2     | 0  | 0  | 1  | 0  | 2       | Valid      |
+| 3     | 0  | 0  | 1  | 1  | 3       | Valid      |
+| 4     | 0  | 1  | 0  | 0  | 4       | Valid      |
+| 5     | 0  | 1  | 0  | 1  | 5       | Valid      |
+| 6     | 0  | 1  | 1  | 0  | 6       | Valid      |
+| 7     | 0  | 1  | 1  | 1  | 7       | Valid      |
+| 8     | 1  | 0  | 0  | 0  | 8       | Valid      |
+| 9     | 1  | 0  | 0  | 1  | 9       | Valid      |
+| 10    | 0  | 0  | 0  | 0  | 0       | Reset      |
+
+**Note**: States 1010 (10) through 1111 (15) are never reached
+
+#### Logic Equations (Synchronous BCD Counter)
+
+**JK Flip-Flop Inputs:**
+- J0 = K0 = 1
+- J1 = K1 = Q3' · Q0
+- J2 = K2 = Q0 · Q1
+- J3 = K3 = Q0 · Q1 · Q2
+
+**Reset Logic:**
+- RESET = Q3 · Q1 (When count reaches 10, i.e., 1010)
+
+**Alternative Design using AND gate:**
+- When Q3 = 1 AND Q1 = 1, generate reset pulse
+- This forces all outputs to 0000
+
+#### State Diagram
+
+```
+0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 0
+↑                                                   |
+|___________________________________________________|
+```
+
+### Excitation Table (BCD Counter)
+
+| Present State | Next State | J0 | K0 | J1 | K1 | J2 | K2 | J3 | K3 |
+|--------------|------------|----|----|----|----|----|----|----|----|  
+| 0000         | 0001       | 1  | X  | 0  | X  | 0  | X  | 0  | X  |
+| 0001         | 0010       | X  | 1  | 1  | X  | 0  | X  | 0  | X  |
+| 0010         | 0011       | 1  | X  | X  | 0  | 0  | X  | 0  | X  |
+| 0011         | 0100       | X  | 1  | X  | 1  | 1  | X  | 0  | X  |
+| 0100         | 0101       | 1  | X  | 0  | X  | X  | 0  | 0  | X  |
+| 0101         | 0110       | X  | 1  | 1  | X  | X  | 0  | 0  | X  |
+| 0110         | 0111       | 1  | X  | X  | 0  | X  | 0  | 0  | X  |
+| 0111         | 1000       | X  | 1  | X  | 1  | X  | 1  | 1  | X  |
+| 1000         | 1001       | 1  | X  | 0  | X  | 0  | X  | X  | 0  |
+| 1001         | 0000       | X  | 1  | 0  | X  | 0  | X  | X  | 1  |
+
+### K-Map Simplification
+
+For designing the logic equations, use K-maps for each JK input:
+
+**For J0, K0:**
+- J0 = K0 = 1 (Always toggle)
+
+**For J1, K1:**
+- J1 = Q3' · Q0
+- K1 = Q0
+
+**For J2, K2:**
+- J2 = Q0 · Q1
+- K2 = Q0 · Q1
+
+**For J3, K3:**
+- J3 = Q0 · Q1 · Q2
+- K3 = Q0
+
+### Applications of BCD Counters
+
+1. **Digital Clocks**: Hour and minute displays
+2. **Frequency Counters**: Measuring signal frequency
+3. **Digital Voltmeters**: Display reading in decimal
+4. **Timers**: Countdown and alarm systems
+5. **Calculators**: Decimal arithmetic operations
+6. **Seven-Segment Displays**: Driving decimal displays
+7. **Event Counters**: Counting discrete events
+8. **Automobile Odometers**: Digital distance measurement
+
+### Comparison: Binary vs BCD Counter
+
+| Feature | Binary Counter | BCD Counter |
+|---------|----------------|-------------|
+| **Modulus** | 2ⁿ | 10 |
+| **States Used** | All (0 to 2ⁿ-1) | 0 to 9 only |
+| **Efficiency** | 100% | 62.5% (10/16) |
+| **Design** | Simpler | More complex |
+| **Display** | Binary | Decimal |
+| **Applications** | Computing | Decimal displays |
+| **Example (4-bit)** | 0-15 | 0-9 |
+
+### Cascading BCD Counters
+
+Multiple BCD counters can be cascaded to count larger decimal numbers:
+- **2 BCD counters**: Count 00 to 99 (2-digit display)
+- **3 BCD counters**: Count 000 to 999 (3-digit display)
+- **4 BCD counters**: Count 0000 to 9999 (4-digit display)
+
+**Cascade Connection:**
+- Output carry of first BCD counter feeds clock of second BCD counter
+- Carry generated when count goes from 9 to 0
+- Each stage represents one decimal digit
+
+## COUNTER APPLICATIONS
+
+### General Applications
+
+1. **Frequency Division**: Dividing clock frequency by n
+2. **Timing Generation**: Creating precise time delays
+3. **Event Counting**: Counting occurrences of events
+4. **Sequence Generation**: Creating specific output patterns
+5. **Address Generation**: Memory addressing in computers
+6. **Rate Multiplier**: Frequency multiplication/division
+7. **Digital Instrumentation**: Measurement and display
+8. **Control Systems**: State machines and sequencers
+
+### Important Design Considerations
+
+**For Ripple Counters:**
+- Maximum frequency = 1 / (n × t_pd) where n = number of flip-flops
+- Consider cumulative delay in timing calculations
+- Use for low-frequency applications
+
+**For Synchronous Counters:**
+- Maximum frequency = 1 / (t_pd + t_setup + t_combinational)
+- All outputs change simultaneously
+- Preferred for high-speed applications
+- More complex but more reliable
+
+**For BCD Counters:**
+- Ensure proper reset mechanism
+- Verify unused states don't get stuck
+- Use for decimal display interfacing
+- Consider cascading for multi-digit displays
+
+## SUMMARY
+
+Counters are essential sequential circuits in digital systems. Key points:
+
+- **Ripple Counters**: Simple, low-cost, but slower due to propagation delay
+- **Synchronous Counters**: Fast, reliable, but more complex and expensive  
+- **Binary Counters**: Count in natural binary sequence (mod-2ⁿ)
+- **Up-Down Counters**: Bidirectional counting capability
+- **BCD Counters**: Decade counting (mod-10) for decimal displays
+- **Applications**: Timing, counting, frequency division, and control
+
+**Choosing the Right Counter:**
+- Use ripple for simple, low-frequency applications
+- Use synchronous for high-speed, critical timing applications
+- Use BCD for decimal display interfacing
+- Use up-down for bidirectional control systems
+
+**Registers and counters form the backbone of digital data storage, manipulation, and control. Understanding their design, operation, and applications is essential for building efficient digital systems.**
