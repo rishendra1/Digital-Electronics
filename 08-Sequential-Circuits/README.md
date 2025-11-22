@@ -819,18 +819,18 @@ Registers are sequential circuits consisting of a group of flip-flops used to st
 
 **Key Functions:**
 - **Data Storage**: Hold binary information temporarily
-- - **Data Transfer**: Move data between different parts of a digital system
-  - - **Data Manipulation**: Perform operations like shifting and counting
-    - - **Synchronization**: Coordinate timing in synchronous systems
-      - - **Buffering**: Provide temporary storage between operations
+- **Data Transfer**: Move data between different parts of a digital system
+- **Data Manipulation**: Perform operations like shifting and counting
+- **Synchronization**: Coordinate timing in synchronous systems
+- **Buffering**: Provide temporary storage between operations
        
-        - ### Characteristics of Registers
+### Characteristics of Registers
        
-        - 1. **Capacity**: Determined by the number of flip-flops (4-bit, 8-bit, 16-bit, etc.)
-          2. 2. **Speed**: Operates at clock frequency
-             3. 3. **Synchronous Operation**: All flip-flops triggered by common clock
-                4. 4. **Parallel Access**: Can load/read all bits simultaneously
-                   5. 5. **Cascadable**: Multiple registers can be connected in series
+1. **Capacity**: Determined by the number of flip-flops (4-bit, 8-bit, 16-bit, etc.)
+2. **Speed**: Operates at clock frequency
+3. **Synchronous Operation**: All flip-flops triggered by common clock
+4. **Parallel Access**: Can load/read all bits simultaneously
+5. **Cascadable**: Multiple registers can be connected in series
                      
                       6. ---
                      
