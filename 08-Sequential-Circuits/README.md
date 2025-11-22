@@ -1706,4 +1706,3 @@ Counters are essential sequential circuits in digital systems. Key points:
 - Use BCD for decimal display interfacing
 - Use up-down for bidirectional control systems
 
-**Registers and counters form the backbone of digital data storage, manipulation, and control. Understanding their design, operation, and applications is essential for building efficient digital systems.**
