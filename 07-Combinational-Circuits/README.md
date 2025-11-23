@@ -54,13 +54,13 @@ A combinational circuit is a digital circuit where the output depends only on th
 A half adder adds two single binary digits and produces Sum and Carry outputs.
 
 **Truth Table:**
-```
-A  B | Sum  Carry
-0  0 |  0    0
-0  1 |  1    0
-1  0 |  1    0  
-1  1 |  0    1
-```
+`
+| A | B | Sum | Carry |
+|---|---|-----|-------|
+| 0 | 0 | 0   | 0     |
+| 0 | 1 | 1   | 0     |
+| 1 | 0 | 1   | 0     |
+| 1 | 1 | 0   | 1     |
 
 **Boolean Expressions:**
 - Sum = A ⊕ B (XOR operation)
@@ -90,17 +90,17 @@ graph LR
 A full adder adds three binary digits (two significant bits and a carry-in) and produces Sum and Carry-out.
 
 **Truth Table:**
-```
-A  B  Cin | Sum  Cout
-0  0  0   |  0    0
-0  0  1   |  1    0
-0  1  0   |  1    0
-0  1  1   |  0    1
-1  0  0   |  1    0
-1  0  1   |  0    1
-1  1  0   |  0    1
-1  1  1   |  1    1
-```
+`
+| A | B | Cin | Sum | Cout |
+|---|---|-----|-----|------|
+| 0 | 0 | 0   | 0   | 0    |
+| 0 | 0 | 1   | 1   | 0    |
+| 0 | 1 | 0   | 1   | 0    |
+| 0 | 1 | 1   | 0   | 1    |
+| 1 | 0 | 0   | 1   | 0    |
+| 1 | 0 | 1   | 0   | 1    |
+| 1 | 1 | 0   | 0   | 1    |
+| 1 | 1 | 1   | 1   | 1    |
 
 **Boolean Expressions:**
 - Sum = A ⊕ B ⊕ Cin
@@ -290,14 +290,13 @@ Converts 2^n input lines to n-bit binary output (inverse of decoder).
 
 **Truth Table (4-to-2 Encoder):**
 
-```
-Inputs          | Outputs
-D3 D2 D1 D0     | A1 A0
-0  0  0  1      | 0  0
-0  0  1  0      | 0  1  
-0  1  0  0      | 1  0
-1  0  0  0      | 1  1
-```
+`
+| D3 | D2 | D1 | D0 | A1 | A0 |
+|----|----|----|----|----|----|
+| 0  | 0  | 0  | 1  | 0  | 0  |
+| 0  | 0  | 1  | 0  | 0  | 1  |
+| 0  | 1  | 0  | 0  | 1  | 0  |
+| 1  | 0  | 0  | 0  | 1  | 1  |
 
 **Circuit Diagram:**
 
