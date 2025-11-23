@@ -288,23 +288,44 @@ graph TB
 
 Converts 2^n input lines to n-bit binary output (inverse of decoder).
 
-### Types
+**Truth Table (4-to-2 Encoder):**
 
-**Binary Encoder:**
-- 2^n inputs to n outputs
-- Only one input should be active at a time
-- Problem: Doesn't handle multiple active inputs
+```
+Inputs          | Outputs
+D3 D2 D1 D0     | A1 A0
+0  0  0  1      | 0  0
+0  0  1  0      | 0  1  
+0  1  0  0      | 1  0
+1  0  0  0      | 1  1
+```
 
-**Priority Encoder:**
-- Handles multiple active inputs
-- Highest priority input is encoded
-- Includes valid output indicator
-- Commonly used in interrupt handling
+**Circuit Diagram:**
 
-**8-to-3 Priority Encoder:**
-- Inputs: D7, D6, D5, D4, D3, D2, D1, D0
-- Outputs: A2, A1, A0, V (valid)
-- D7 has highest priority, D0 has lowest
+A 4-to-2 encoder can be implemented using OR gates:
+- Output A0 = D1 + D3
+- Output A1 = D2 + D3
+
+```mermaid
+graph TD
+    D3[D3] --> OR1[OR]
+    D1[D1] --> OR1
+    OR1 --> A0[A0]
+    
+    D3 --> OR2[OR]
+    D2[D2] --> OR2
+    OR2 --> A1[A1]
+    
+    D0[D0]
+    
+    style D3 fill:#e1f5ff
+    style D2 fill:#e1f5ff
+    style D1 fill:#e1f5ff
+    style D0 fill:#e1f5ff
+    style A1 fill:#fff3e0
+    style A0 fill:#fff3e0
+    style OR1 fill:#c8e6c9
+    style OR2 fill:#c8e6c9
+```
 
 ## Magnitude Comparator
 
